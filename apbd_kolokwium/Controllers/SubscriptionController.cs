@@ -56,8 +56,6 @@ public class SubscriptionController : ControllerBase
         if (subscription is null) return Conflict("Podana subskrypcja nie istnieje");
 
         if (subscription.EndTime < DateTime.Now) return Conflict("Podana subskrypcja jest nieaktywna");
-        
-        //TODO: walidacja subskrypcji za ten okres
 
         var subscriptionPrice = subscription.Price;
         var discounts = await _context.Discounts
